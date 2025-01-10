@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Activity Timeline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap');
+
+        :root {
+            --primary-color: #1A1F35;
+            --secondary-color: #f02121;
+            --accent-color: #F472B6;
+            --gradient-1: linear-gradient(135deg, #7C3AED, #F472B6);
+            --gradient-2: linear-gradient(135deg, #F472B6, #FFA07A);
+            --text-color: #F8FAFC;
+            --bg-color: #0F172A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-color);
+            padding: 2rem;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(244, 114, 182, 0.15) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            position: relative;
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem;
+            background: rgba(26, 31, 53, 0.8);
+            border-radius: 30px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 0 30px rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            animation: headerFloat 6s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(124, 58, 237, 0.2),
+                transparent
+            );
+            animation: shimmer 8s infinite;
+        }
+        .main-title {
+            font-size: 6rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: white;
+            margin-bottom: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            position: relative;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.3);
+            animation: titlePulse 3s ease-in-out infinite, titleGlow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.5); }
+        }
+
+        .main-title::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: blur(20px);
+            opacity: 0.8;
+        }
+
+        .username {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            background: rgba(124, 58, 237, 0.15);
+            box-shadow: 
+                0 4px 20px rgba(124, 58, 237, 0.3),
+                inset 0 0 10px rgba(124, 58, 237, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .username::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle,
+                rgba(124, 58, 237, 0.1) 0%,
+                transparent 70%
+            );
+            animation: ripple 5s linear infinite;
+        }
+
+        .username:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 30px rgba(124, 58, 237, 0.4),
+                inset 0 0 15px rgba(124, 58, 237, 0.3);
+        }
+
+        @keyframes headerFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-15px) rotate(0.5deg); 
+            }
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scale(0.98);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 200%;
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: calc(100% + 100px);
+            background: var(--text-color);
+            border-radius: 2px;
+            animation: growLine 1.5s ease-out forwards;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 4rem 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 30px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-dot-wrapper {
+            width: 60px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            background: var(--text-color);
+            border-radius: 50%;
+            animation: pulseDot 2s infinite;
+            border: 2px solid var(--bg-color);
+        }
+
+        .date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-header {
+            padding: 15px 20px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .content-body {
+            padding: 0 20px 20px;
+        }
+
+        .description {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .description a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .description a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            border: 1px solid var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-arrow {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-arrow i {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            animation: floatArrow 2s ease-in-out infinite;
+        }
+
+        @keyframes growLine {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        @keyframes pulseDot {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        @keyframes floatArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .title:hover {
+            color: var(--accent-color);
+        }
+
+        .tag:hover {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-arrow:hover {
+            background: var(--text-color);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .timeline-arrow:hover i {
+            color: var(--bg-color);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before,
+            header::after {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+            }
+
+            .timeline-dot-wrapper {
+                position: absolute;
+                left: 0;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .timeline-arrow {
+                left: 30px;
+                transform: translateX(0);
+            }
+
+            .timeline-arrow:hover {
+                transform: translateX(0) scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="main-title">UNIVERSITY ACTIVITY TIMELINE</h1>
+        <div class="username">
+            <i class="fas fa-user-circle"></i>
+            <b>Tariqul Islam</b>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        October 15, 2024
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">AIUB CGPA Calculator Launch</h2>
+                    </div>
+                    <div class="content-body">
+                        <p>Launched a comprehensive web-based CGPA calculator tool for AIUB students.</p>
+                        <div class="tags">
+                            <a href="https://tariqulislamrahat.github.io/aiub-cgpa-calculator/" class="tag button" style="text-decoration: none;">CGPA Calculator</a>
+                            <a href="https://github.com/tariqulislamrahat/aiub-cgpa-calculator" class="tag button" style="text-decoration: none;">GitHub Repository</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="timeline-item hidden">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        December 2, 2024
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Research Project</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">Started research on "Barriers to Awareness and Engagement in Competitive Programming Among Bangladeshi Students." Collected data from over 1000+ participants for analysis.</p>
+                        <div class="tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">1000 data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="timeline-item hidden">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        December 22, 2024
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Joined AIUB Social Welfare Club</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">Joined the AIUB Social Welfare Club – Shomoy as a general member and graphic designer.</p>
+                        <div class="tags">
+                            <span class="tag">Club Activity</span>
+                            <span class="tag">Graphic Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="timeline-item hidden">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        December 24, 2024
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">AIUB Games 2024</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">Participated in AIUB Games 2024, an exciting university-wide sports event.</p>
+                        <div class="tags">
+                            <span class="tag">Sports</span>
+                            <span class="tag">University Event</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="timeline-item hidden">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        December 30, 2024
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Winter Clothing Drive</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">Part of the flagship event of the AIUB Social Welfare Club – Shomoy, named "Winter Clothing Drive." We collected "BDT 202,569" from our university to donate winter clothing to the underprivileged.</p>
+                        <div class="tags">
+                            <span class="tag">Social Work</span>
+                            <span class="tag">Fundraising</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="timeline-item hidden">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        January 2, 2025
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Adspire Competition</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">Participated in the Grand Final of "Adspire: The Aspiring Ad Making Challenge" and secured 5th place out of 120 teams.</p>
+                        <div class="tags">
+                            <span class="tag">Ad Making</span>
+                            <span class="tag">5th Place</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function checkVisible() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isVisible) {
+                    item.style.opacity = "1";
+                    item.style.transform = "translateY(0)";
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', checkVisible);
+        window.addEventListener('scroll', checkVisible);
+    </script>
+</body>
+</html>
