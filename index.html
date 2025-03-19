@@ -1,12 +1,11 @@
 <!-- Tariqul Islam -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Activities Timeline</title>
+    <title>Activities Timeline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -83,6 +82,28 @@
             box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
         }
 
+        .search-container {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        #search-input {
+            width: 60%;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #search-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+        }
+
         .timeline {
             position: relative;
             padding: 1rem 0;
@@ -144,15 +165,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .dot:hover {
@@ -231,33 +246,18 @@
         }
 
         @media (max-width: 360px) {
-            .main-title {
-                font-size: 1.5rem;
-            }
-
-            .username {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-            }
-
-            .timeline-content {
-                font-size: 0.9rem;
-            }
-
-            .title {
-                font-size: 1.1rem;
-            }
-
-            .tag {
-                font-size: 0.75rem;
-                padding: 0.2rem 0.6rem;
-            }
+            .main-title { font-size: 1.5rem; }
+            .username { font-size: 0.9rem; padding: 0.5rem 1rem; }
+            .timeline-content { font-size: 0.9rem; }
+            .title { font-size: 1.1rem; }
+            .tag { font-size: 0.75rem; padding: 0.2rem 0.6rem; }
+            #search-input { width: 80%; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1 class="main-title">University Activities Timeline</h1>
+        <h1 class="main-title">Activities Timeline</h1>
         <div class="username">
             <i class="fas fa-user-circle"></i>
             <b>Tariqul Islam</b>
@@ -266,6 +266,7 @@
 
     <div class="container">
         <div class="timeline">
+            <!-- Timeline Items -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -418,6 +419,54 @@
                     <div class="dot"></div>
                 </div>
             </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        March 2025
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Oder Eid, Amader Khushi Fundraiser</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">Organized by AIUB Social Welfare Club - Shomoy, this event collected a total of <span class="highlight">2,46,050 Taka</span> to provide clothes and items to underprivileged people for Eid, spreading happiness and joy.</p>
+                        <div class="tags">
+                            <span class="tag">Fundraiser</span>
+                            <span class="tag">Eid Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        March 2025
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Spirit of Ramadan Iftar Distribution</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">As part of the Nishonkoch Foundation's initiatives, distributed iftar to people at the end of the day during Ramadan, fostering community spirit and support. Also collected funds to support the distribution efforts.</p>
+                        <div class="tags">
+                            <span class="tag">Iftar Distribution</span>
+                            <span class="tag">Ramadan Initiative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search activities...">
         </div>
     </div>
 
@@ -433,8 +482,32 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', checkVisible);
+        document.addEventListener('DOMContentLoaded', () => {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const lastItem = timelineItems[timelineItems.length - 1];
+            lastItem.scrollIntoView({ behavior: 'smooth' });
+            checkVisible();
+        });
+
         window.addEventListener('scroll', checkVisible);
+
+        const searchInput = document.getElementById('search-input');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            timelineItems.forEach(item => {
+                const date = item.querySelector('.date').textContent.toLowerCase();
+                const title = item.querySelector('.title').textContent.toLowerCase();
+                const description = item.querySelector('.description').textContent.toLowerCase();
+                if (query === '' || date.includes(query) || title.includes(query) || description.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            checkVisible();
+        });
     </script>
 </body>
 </html>
