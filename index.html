@@ -1,4 +1,3 @@
-
 <!-- Tariqul Islam -->
 
 <!DOCTYPE html>
@@ -11,7 +10,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap');
-
         :root {
             --primary-color: #1A1F35;
             --secondary-color: #f02121;
@@ -19,14 +17,12 @@
             --text-color: #F8FAFC;
             --bg-color: #0F172A;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
         body {
             min-height: 100vh;
             background: var(--bg-color);
@@ -38,14 +34,12 @@
                 linear-gradient(45deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
             background-attachment: fixed;
         }
-
         .container {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             padding: 0 1rem;
         }
-
         header {
             text-align: center;
             margin-bottom: 2rem;
@@ -58,7 +52,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(124, 58, 237, 0.1);
         }
-
         .main-title {
             font-size: 2rem;
             font-family: 'Oswald', sans-serif;
@@ -71,7 +64,6 @@
                 0 0 10px rgba(255, 255, 255, 0.5),
                 0 0 20px rgba(255, 255, 255, 0.3);
         }
-
         .username {
             display: inline-flex;
             align-items: center;
@@ -82,12 +74,10 @@
             background: rgba(124, 58, 237, 0.15);
             box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
         }
-
         .search-container {
             margin-top: 1rem;
             text-align: center;
         }
-
         #search-input {
             width: 60%;
             padding: 0.5rem 1rem;
@@ -99,18 +89,15 @@
             outline: none;
             transition: all 0.3s ease;
         }
-
         #search-input:focus {
             background: rgba(255, 255, 255, 0.2);
             box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
         }
-
         .timeline {
             position: relative;
             padding: 1rem 0;
             margin-top: 2rem;
         }
-
         .timeline::before {
             content: '';
             position: absolute;
@@ -121,7 +108,6 @@
             background: var(--text-color);
             border-radius: 5px;
         }
-
         .timeline-item {
             position: relative;
             padding-left: 45px;
@@ -131,7 +117,6 @@
             transition: all 0.4s ease;
             animation: fadeIn 0.5s forwards;
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -142,18 +127,15 @@
                 transform: translateY(0);
             }
         }
-
         .timeline-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .timeline-dot-wrapper {
             position: absolute;
             left: 11px;
             top: 20px;
         }
-
         .dot {
             width: 20px;
             height: 20px;
@@ -164,17 +146,14 @@
             transition: transform 0.3s ease;
             animation: pulse 1.5s infinite;
         }
-
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-
         .dot:hover {
             transform: scale(1.2);
         }
-
         .timeline-content {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
@@ -182,11 +161,9 @@
             overflow: hidden;
             transition: transform 0.3s ease;
         }
-
         .timeline-content:hover {
             transform: scale(1.02);
         }
-
         .date {
             display: flex;
             align-items: center;
@@ -195,32 +172,26 @@
             font-size: 0.9rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .content-header {
             padding: 0.75rem 1rem;
         }
-
         .title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
-
         .content-body {
             padding: 0 1rem 1rem;
         }
-
         .description {
             font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 1rem;
         }
-
         .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-
         .tag {
             background-color: var(--text-color);
             color: var(--bg-color);
@@ -229,23 +200,19 @@
             font-size: 0.8rem;
             white-space: nowrap;
         }
-
         .tag.button {
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
         }
-
         .tag.button:hover {
             transform: translateY(-2px);
             box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
         }
-
         .highlight {
             color: #ff2c2c;
             font-weight: bold;
         }
-
         @media (max-width: 360px) {
             .main-title { font-size: 1.5rem; }
             .username { font-size: 0.9rem; padding: 0.5rem 1rem; }
@@ -264,10 +231,8 @@
             <b>Tariqul Islam</b>
         </div>
     </header>
-
     <div class="container">
         <div class="timeline">
-            <!-- Timeline Items -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -280,8 +245,9 @@
                     <div class="content-body">
                         <p class="description">Launched a comprehensive web-based CGPA calculator tool for AIUB students.</p>
                         <div class="tags">
-                            <a href="https://tariqulislamrahat.github.io/aiub-cgpa-calculator/" class="tag button">CGPA Calculator</a>
-                            <a href="https://github.com/tariqulislamrahat/aiub-cgpa-calculator" class="tag button">Repository</a>
+                            <span class="tag">Project</span>
+                            <span class="tag">Web Tool</span>
+                            <span class="tag">Academic</span>
                         </div>
                     </div>
                 </div>
@@ -289,29 +255,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="date">
-                        <i class="fas fa-calendar-check"></i>
-                        December 2, 2024
-                    </div>
-                    <div class="content-header">
-                        <h2 class="title">Research Project</h2>
-                    </div>
-                    <div class="content-body">
-                        <p class="description">Started research on "Barriers to Awareness and Engagement in Competitive Programming Among Bangladeshi Students." Collected data from over <span class="highlight">1000+ participants</span> for analysis.</p>
-                        <div class="tags">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjzYV0T625DOK_feaYDhzv1YNYq8lw6XZqEwVN3o16xA_c8g/viewform" class="tag button">Google Form</a>
-                            <span class="tag">Report</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-dot-wrapper">
-                    <div class="dot"></div>
-                </div>
-            </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -324,8 +267,9 @@
                     <div class="content-body">
                         <p class="description">Joined the AIUB Social Welfare Club – Shomoy as a general member and graphic designer.</p>
                         <div class="tags">
-                            <a href="https://www.facebook.com/share/p/1H49SD45sK/" class="tag button">Recruitment List</a>
-                            <a href="https://www.facebook.com/share/p/1433xJ8K1A/" class="tag button">Orientation</a>
+                            <span class="tag">Social Work</span>
+                            <span class="tag">Position</span>
+                            <span class="tag">Club</span>
                         </div>
                     </div>
                 </div>
@@ -333,7 +277,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -346,8 +289,9 @@
                     <div class="content-body">
                         <p class="description">Participated in AIUB Games 2024, an exciting university-wide sports event.</p>
                         <div class="tags">
-                            <a href="https://www.dhakatribune.com/bangladesh/event/367811/aiub-games-2024-begins" class="tag button">AIUB Games</a>
-                            <a href="https://www.dhakatribune.com/bangladesh/event/369586/aiub-celebrates-excellence-in-sports-with" class="tag button">Excellence</a>
+                            <span class="tag">Competition</span>
+                            <span class="tag">Sports</span>
+                            <span class="tag">Event</span>
                         </div>
                     </div>
                 </div>
@@ -355,7 +299,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -368,8 +311,9 @@
                     <div class="content-body">
                         <p class="description">Part of the flagship event of the AIUB Social Welfare Club – Shomoy, named "Winter Clothing Drive." We collected <span class="highlight">BDT 202,569</span> from our university to donate winter clothing to the underprivileged.</p>
                         <div class="tags">
-                            <a href="https://www.facebook.com/share/v/1B2YGn58pH/" class="tag button">Social Work</a>
-                            <a href="https://www.facebook.com/share/v/1DvNxdxjRP/" class="tag button">Fundraising</a>
+                            <span class="tag">Social Work</span>
+                            <span class="tag">Charity</span>
+                            <span class="tag">Event</span>
                         </div>
                     </div>
                 </div>
@@ -377,7 +321,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -390,8 +333,9 @@
                     <div class="content-body">
                         <p class="description">Participated in the Grand Final of "Adspire: The Aspiring Ad Making Challenge" and secured <span class="highlight">5th place</span> out of 120 teams.</p>
                         <div class="tags">
-                            <a href="https://www.dhakatribune.com/bangladesh/event/369957/step-footwear-aiub-adspire-2024-held-on-thursday" class="tag button">Adspire 2024</a>
-                            <span class="tag">5th Place</span>
+                            <span class="tag">Competition</span>
+                            <span class="tag">Achievement</span>
+                            <span class="tag">Event</span>
                         </div>
                     </div>
                 </div>
@@ -399,7 +343,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -412,7 +355,9 @@
                     <div class="content-body">
                         <p class="description">Became a member of the Nishonkoch Foundation, engaging in various social welfare projects aimed at uplifting the community.</p>
                         <div class="tags">
-                            <a href="https://www.facebook.com/Nishonkochfoundation.org" class="tag button">Social Work</a>
+                            <span class="tag">Social Work</span>
+                            <span class="tag">Position</span>
+                            <span class="tag">NGO</span>
                         </div>
                     </div>
                 </div>
@@ -420,7 +365,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -433,8 +377,9 @@
                     <div class="content-body">
                         <p class="description">Organized by AIUB Social Welfare Club - Shomoy, this event collected a total of <span class="highlight">BDT 2,46,050</span> to provide clothes and items to underprivileged people for Eid, spreading happiness and joy.</p>
                         <div class="tags">
-                            <span class="tag">Fundraiser</span>
-                            <span class="tag">Eid Support</span>
+                            <span class="tag">Social Work</span>
+                            <span class="tag">Charity</span>
+                            <span class="tag">Event</span>
                         </div>
                     </div>
                 </div>
@@ -442,7 +387,6 @@
                     <div class="dot"></div>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="date">
@@ -455,8 +399,9 @@
                     <div class="content-body">
                         <p class="description">As part of the Nishonkoch Foundation's initiatives, distributed iftar to people at the end of the day during Ramadan, fostering community spirit and support. Also collected funds to support the distribution efforts.</p>
                         <div class="tags">
-                            <span class="tag">Iftar Distribution</span>
-                            <span class="tag">Ramadan Initiative</span>
+                            <span class="tag">Social Work</span>
+                            <span class="tag">Charity</span>
+                            <span class="tag">Ramadan</span>
                         </div>
                     </div>
                 </div>
@@ -480,8 +425,57 @@
                             The event provided a valuable opportunity to collaborate, learn, and promote innovative solutions for a zero waste future.
                         </p>
                         <div class="tags">
-                            <span class="tag">Zero Waste</span>
-                            <span class="tag">Product Design</span>
+                            <span class="tag">Competition</span>
+                            <span class="tag">Project</span>
+                            <span class="tag">Sustainability</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        May 24, 2025
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">International Conference Paper Presentation at BUTEX</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">
+                            Presented our research at the <span class="highlight">3rd International Conference on Textile Science and Engineering</span> at BUTEX. Our paper was one of 36 selected from 155 submissions. Grateful to my team and supervisor for their support!
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Conference</span>
+                            <span class="tag">Research</span>
+                            <span class="tag">Academic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-dot-wrapper">
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="date">
+                        <i class="fas fa-calendar-check"></i>
+                        June 2, 2025
+                    </div>
+                    <div class="content-header">
+                        <h2 class="title">Campus Ambassador for DIMFF</h2>
+                    </div>
+                    <div class="content-body">
+                        <p class="description">
+                            Joined <span class="highlight">Dhaka International Mobile Film Festival (DIMFF)</span> as Campus Ambassador! Excited to promote mobile filmmaking and help organize a competition at AIUB.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Position</span>
+                            <span class="tag">Film Festival</span>
+                            <span class="tag">Competition</span>
                         </div>
                     </div>
                 </div>
@@ -490,12 +484,10 @@
                 </div>
             </div>
         </div>
-
         <div class="search-container">
             <input type="text" id="search-input" placeholder="Search activities...">
         </div>
     </div>
-
     <script>
         function checkVisible() {
             const timelineItems = document.querySelectorAll('.timeline-item');
@@ -507,26 +499,47 @@
                 }
             });
         }
-
         document.addEventListener('DOMContentLoaded', () => {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const lastItem = timelineItems[timelineItems.length - 1];
-            lastItem.scrollIntoView({ behavior: 'smooth' });
             checkVisible();
+            setTimeout(() => {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                for (let i = timelineItems.length - 1; i >= 0; i--) {
+                    if (timelineItems[i].style.display !== 'none') {
+                        timelineItems[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        break;
+                    }
+                }
+            }, 100);
         });
-
         window.addEventListener('scroll', checkVisible);
-
         const searchInput = document.getElementById('search-input');
         const timelineItems = document.querySelectorAll('.timeline-item');
-
         searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase();
+            const query = searchInput.value.trim().toLowerCase();
             timelineItems.forEach(item => {
-                const date = item.querySelector('.date').textContent.toLowerCase();
-                const title = item.querySelector('.title').textContent.toLowerCase();
-                const description = item.querySelector('.description').textContent.toLowerCase();
-                if (query === '' || date.includes(query) || title.includes(query) || description.includes(query)) {
+                let searchText = '';
+                const dateElem = item.querySelector('.date');
+                if (dateElem) {
+                    searchText += ' ' + Array.from(dateElem.childNodes)
+                        .filter(n => n.nodeType === 3)
+                        .map(n => n.textContent)
+                        .join(' ')
+                        .toLowerCase();
+                }
+                const titleElem = item.querySelector('.title');
+                if (titleElem) {
+                    searchText += ' ' + titleElem.textContent.toLowerCase();
+                }
+                const descElem = item.querySelector('.description');
+                if (descElem) {
+                    searchText += ' ' + descElem.textContent.toLowerCase();
+                }
+                const tagElems = item.querySelectorAll('.tag');
+                tagElems.forEach(tag => {
+                    searchText += ' ' + tag.textContent.toLowerCase();
+                });
+                searchText = searchText.replace(/\s+/g, ' ').trim();
+                if (query === '' || searchText.includes(query)) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
